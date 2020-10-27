@@ -14,6 +14,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using System.Xml;
+using System.Xml.XPath;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Valutaomregner
 {
@@ -22,29 +29,43 @@ namespace Valutaomregner
     /// </summary>
     public partial class MainWindow : Window
     {
+         
+ 
         public MainWindow()
         {
             InitializeComponent();
             BindCurrency();
+            //new ApiHelper().DeserializeObject("C:/Users/queue/source/repos/Valutaomregner/ExchangeRatesXML.xml");
+            //new ApiHelper().SerializeNode("C:/Users/queue/source/repos/Valutaomregner/test.xml");
+            //new ApiHelper().SerializeElement("C:/Users/queue/source/repos/Valutaomregner/newTest.xml");
+            string filepath = File.ReadAllText(@"C:\Users\queue\source\repos\Valutaomregner\ExchangeRatesXML.xml");
+            Currency er = ApiHelper.DeserializeElement<Currency>(filepath);
+            Console.Write(er.Code, er.Rate, er.Desc);
+            
         }
 
-        private void BindCurrency()
+        public void BindCurrency()
         {
+            
             DataTable dtCurrency = new DataTable();
             //Adding columns
+
             dtCurrency.Columns.Add("Text");
             dtCurrency.Columns.Add("Value");
+            
+            //dtCurrency.Rows.Add(er.Code, er.Rate);
+            dtCurrency.Rows.Add();
 
             //Adding rows
-            dtCurrency.Rows.Add("--SELECT--", 0);
-            dtCurrency.Rows.Add("DKK", 0);
-            dtCurrency.Rows.Add("EUR", 744.29);
-            dtCurrency.Rows.Add("USD", 636.25);
-            dtCurrency.Rows.Add("GBP", 823.49);
-            dtCurrency.Rows.Add("SEK", 71.72);
-            dtCurrency.Rows.Add("NOK", 67.86);
-            dtCurrency.Rows.Add("CHF", 695.79);
-            dtCurrency.Rows.Add("JPY", 6.0438);
+
+            /*dtCurrency.Rows.Add("--SELECT--", 0);
+            dtCurrency.Rows.Add("EUR", 7.4429);
+            dtCurrency.Rows.Add("USD", 6.3625);
+            dtCurrency.Rows.Add("GBP", 8.2349);
+            dtCurrency.Rows.Add("SEK", 7.172);
+            dtCurrency.Rows.Add("NOK", 6.786);
+            dtCurrency.Rows.Add("CHF", 6.9579);
+            dtCurrency.Rows.Add("JPY", 0.059955);*/
 
             cmbFromCurrency.ItemsSource = dtCurrency.DefaultView;
             cmbFromCurrency.DisplayMemberPath = "Text";

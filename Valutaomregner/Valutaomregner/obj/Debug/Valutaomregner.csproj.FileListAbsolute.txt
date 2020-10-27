@@ -18,3 +18,7 @@ C:\Users\queue\source\repos\Valutaomregner\Valutaomregner\Valutaomregner\bin\Deb
 C:\Users\queue\source\repos\Valutaomregner\Valutaomregner\Valutaomregner\bin\Debug\FontAwesome.WPF.xml
 C:\Users\queue\source\repos\Valutaomregner\Valutaomregner\Valutaomregner\obj\Debug\Valutaomregner_Content.g.cs
 C:\Users\queue\source\repos\Valutaomregner\Valutaomregner\Valutaomregner\obj\Debug\Valutaomregner.csproj.CopyComplete
+C:\Users\queue\source\repos\Valutaomregner\Valutaomregner\Valutaomregner\bin\Debug\Newtonsoft.Json.dll
+C:\Users\queue\source\repos\Valutaomregner\Valutaomregner\Valutaomregner\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\queue\source\repos\Valutaomregner\Valutaomregner\Valutaomregner\bin\Debug\Newtonsoft.Json.xml
+C:\Users\queue\source\repos\Valutaomregner\Valutaomregner\Valutaomregner\bin\Debug\System.Net.Http.Formatting.xml
