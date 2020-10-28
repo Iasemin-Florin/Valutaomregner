@@ -7,62 +7,38 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.Windows;
 using System.Windows.Documents;
+using System.Runtime.InteropServices;
 
 namespace Valutaomregner
 {
-    /*[XmlRoot(ElementName = "exchangerates")]
-    public class ExchangeRates
-    {
-        public string Code { get; set; }
-
-        public double Rate { get; set; }
-    }*/
-
-    [Serializable]
-    
-    [XmlRoot(Namespace = "http://www.w3.org/2001/XMLSchema-instance",
-        ElementName = "exchangerates",
-        DataType = "Valutakurser")]
+    [XmlRoot(ElementName = "exchangerates")]
+    //Valuta class that holds our ID and our List
     public class Valutakurser
     {
-        public DateTime Id { get; set; }
-        [XmlArray("dailyrates")]
-        
-        public Currency Currency { get; set; }
+        [XmlAttribute]
+        public DateTime id { get; set; }
+        [XmlElement("dailyrates")]
+        public DailyRates daily { get; set; }
     }
 
+    //Class that populates our list
+    public class DailyRates
+    {
+        [XmlElement("currency")]
+        public List<Currency> Currency { get; set; }
+    }
+
+    //Class that holds the values of the list
     public class Currency
     {
-        [XmlAttribute("code")]
-        public string Code { get; set; }
+        [XmlAttribute]
+        public string code { get; set; }
 
-        [XmlAttribute("desc")]
-        public string Desc { get; set; }
-        [XmlAttribute("rate")]
-        public double Rate { get; set; }
+        //[XmlAttribute]
+        //public string desc { get; set; }
+        [XmlAttribute]
+        public double rate { get; set; }
 
         public Currency() { }
     }
-
-
-    public class Test
-    {
-        public string Name { get; set; }
-        public int Age { get; set; }
-    }
-
-    public class DailyRates
-    {
-        public List<Valutakurser> exchangeRates = new List<Valutakurser>();
-        
-        public void DisplayList()
-        {
-            for (int i = 0;  i < exchangeRates.Count();  i++)
-            {
-                MessageBox.Show(i.ToString());
-            }
-        }
-    }
 }
-
-/*, new XmlRootAttribute("exchangerates")*/

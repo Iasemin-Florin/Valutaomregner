@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Test xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Test xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" code="EUR" rate="7.44">
   <Name>Gordon Ramsey</Name>
   <Age>10</Age>
 </Test>

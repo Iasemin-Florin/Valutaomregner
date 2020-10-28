@@ -14,12 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
-using System.Xml;
-using System.Xml.XPath;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Linq;
-using System.Xml.Serialization;
 using System.IO;
 
 namespace Valutaomregner
@@ -35,26 +29,21 @@ namespace Valutaomregner
         {
             InitializeComponent();
             BindCurrency();
-            //new ApiHelper().DeserializeObject("C:/Users/queue/source/repos/Valutaomregner/ExchangeRatesXML.xml");
-            //new ApiHelper().SerializeNode("C:/Users/queue/source/repos/Valutaomregner/test.xml");
-            //new ApiHelper().SerializeElement("C:/Users/queue/source/repos/Valutaomregner/newTest.xml");
-            string filepath = File.ReadAllText(@"C:\Users\queue\source\repos\Valutaomregner\ExchangeRatesXML.xml");
-            Currency er = ApiHelper.DeserializeElement<Currency>(filepath);
-            Console.Write(er.Code, er.Rate, er.Desc);
+            //Calling the API 
+            new ApiHelper().DeserializeObject("https://www.nationalbanken.dk/_vti_bin/DN/DataService.svc/CurrencyRatesXML?lang=en");
             
         }
 
         public void BindCurrency()
         {
-            
+            Currency valutakurser = new Currency();
             DataTable dtCurrency = new DataTable();
+           
             //Adding columns
 
             dtCurrency.Columns.Add("Text");
             dtCurrency.Columns.Add("Value");
-            
-            //dtCurrency.Rows.Add(er.Code, er.Rate);
-            dtCurrency.Rows.Add();
+
 
             //Adding rows
 
